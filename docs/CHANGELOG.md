@@ -12,6 +12,10 @@ Este arquivo documenta todas as mudanças importantes do projeto, seguindo o for
 
 - Suporte inicial para criação de carteiras de investimentos personalizadas com IA.
 
+## [0.2.0] - 2025-01-16
+### Added
+- Implementação da busca de notícias com NewsAPI. Agora, notícias poderãoser analisadas pela IA.
+
 ## [0.1.0] - 2025-01-15
 
 ### Added
