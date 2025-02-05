@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import MagicMock
 
-from src.api.news_api import get_financial_news
+from src.api.news_api import recuperar_noticias_financeiras
 
 
 class TestFinancialNews(unittest.TestCase):
@@ -26,7 +26,7 @@ class TestFinancialNews(unittest.TestCase):
         self.mock_api.return_value = self.mock_response
 
         # Chama a função com o mock no lugar da API real
-        articles = get_financial_news(self.mock_api, self.key_words_list)
+        articles = recuperar_noticias_financeiras(self.mock_api, self.key_words_list)
 
         # Verifica se o mock foi chamado corretamente
         self.mock_api.assert_called_with(q="Criptomoedas")  # Última palavra-chave
