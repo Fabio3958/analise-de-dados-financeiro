@@ -20,11 +20,11 @@ def analisar_sentimento(noticias: List[dict]):
         raise ValueError("Todos os dicionários devem ter o campo 'title'.")
 
     # Carrega modelo prosusAI/finbert e tokenizer
-    nome_modelo = "prosusAI/finbert"
+    nome_modelo = "lucas-leme/FinBERT-PT-BR"
 
     try:
-        modelo = BertForSequenceClassification.from_pretrained(nome_modelo, local_files_only=True)
-        tokenizer = BertTokenizer.from_pretrained(nome_modelo, local_files_only=True)
+        modelo = BertForSequenceClassification.from_pretrained(nome_modelo)
+        tokenizer = BertTokenizer.from_pretrained(nome_modelo)
     except Exception as e:
         raise RuntimeError(f"Erro no carregamento do modelo ou do tokenizer.")
 
