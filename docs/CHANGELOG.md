@@ -8,7 +8,13 @@ Este arquivo documenta todas as mudanças importantes do projeto, seguindo o for
 
 - Planejamento para criação de dashboards interativos.
 
-- Suporte inicial para criação de carteiras de investimentos personalizadas com IA.
+## [0.4.0] - 2025-02-10
+### Added
+- Implementação da funcionalidade de otimização de carteiras de investimento com PyPortfolioOpt e yfinance.
+
+## [0.3.1] - 2025-02-05
+### Changed
+- Modelo de análise de sentimentos trocado para lucas-leme/FinBERT-PT-BR para suportar a análise de notícias brasileiras.
 
 ## [0.3.0] - 2025-02-05
 ### Added

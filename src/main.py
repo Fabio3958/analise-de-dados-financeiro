@@ -25,6 +25,41 @@ if __name__ == '__main__':
              "JBSS3"  # JBS
              ]
 
+    acoes2 = ["BBAS3",  # Banco Do Brasil
+              "CPLE3",  # Copel
+              "PETR4",  # Petrobras
+              ]
+    """
     noticias = recuperar_noticias_financeiras(NewsApiClient.get_everything, acoes)
     analisar_sentimento(noticias)
-    otimizar_portfolio([f"{i}.SA"] for i in acoes)
+    """
+
+    print("---------------------------------------------------------------------------------")
+    print("RAZÃO DE SHARPE")
+    # sharpe
+    for chave, valor in otimizar_portfolio([f"{i}.SA" for i in acoes2], 3).items():
+        print(f"{chave}: {valor}")
+
+    print("---------------------------------------------------------------------------------")
+    print("RISCO MÍNIMO")
+    # min_volume
+    for chave, valor in otimizar_portfolio([f"{i}.SA" for i in acoes2], 3, "min_vol").items():
+        print(f"{chave}: {valor}")
+
+    print("---------------------------------------------------------------------------------")
+    print("MAXIMIZA O RETORNO DE ACORDO COM A AVERSÃO A RISCO - CONSERVADOR")
+    # max_return conservador
+    for chave, valor in otimizar_portfolio([f"{i}.SA" for i in acoes2], 3, "max_return", 2.0).items():
+        print(f"{chave}: {valor}")
+
+    print("---------------------------------------------------------------------------------")
+    print("MAXIMIZA O RETORNO DE ACORDO COM A AVERSÃO A RISCO - MODERADO")
+    # max_return moderado
+    for chave, valor in otimizar_portfolio([f"{i}.SA" for i in acoes2], 3, "max_return", 1.0).items():
+        print(f"{chave}: {valor}")
+
+    print("---------------------------------------------------------------------------------")
+    print("MAXIMIZA O RETORNO DE ACORDO COM A AVERSÃO A RISCO - AGRESSIVO")
+    # max_return agressivo
+    for chave, valor in otimizar_portfolio([f"{i}.SA" for i in acoes2], 3, "max_return", 0.5).items():
+        print(f"{chave}: {valor}")
