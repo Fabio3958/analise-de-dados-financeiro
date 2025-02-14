@@ -25,11 +25,11 @@ def otimizar_portfolio(acoes: list[str], anos_historico: int, metodo_otimizacao:
     {'alocacao_otima': {'AAPL': 0.4, 'MSFT': 0.3, 'GOOG': 0.3}, 'retorno_esperado': 0.15, 'risco': 0.1, 'sharpe': 1.5}
     """
 
+    # Validação de entradas
     if (not isinstance(acoes, list) or not isinstance(anos_historico, int) or not isinstance(metodo_otimizacao, str)
             or not isinstance(aversao_ao_risco, float)):
         raise ValueError("Tipo de parâmetro incorreto: acoes: list[str]; anos_historico: int; metodo_otimizacao: str")
 
-    # Validação de entradas
     if not acoes or anos_historico <= 0:
         raise ValueError("A lista de ações não pode estar vazia e o número de anos históricos deve ser positivo.")
 

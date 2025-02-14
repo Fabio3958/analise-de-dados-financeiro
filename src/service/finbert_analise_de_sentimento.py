@@ -1,10 +1,9 @@
 import openpyxl
-from typing import List
 from transformers import BertTokenizer, BertForSequenceClassification
 from transformers import pipeline
 
 
-def analisar_sentimento(noticias: List[dict]):
+def analisar_sentimento(noticias: list[dict]) -> list[dict]:
     """
     Analisa o sentimento de manchetes de notícias usando o modelo FinBERT-PT-BR e salva os resultados em uma planilha Excel.
 
@@ -34,10 +33,12 @@ def analisar_sentimento(noticias: List[dict]):
 
     # Analisa o sentimento de cada headline
     headlines = [item["title"] for item in noticias]
+    tickers = [item["ticker"] for item in noticias]
+
     resultados = nlp(headlines)
     lista_resultados = [
-        {"Headline": headline, "Sentimento": result["label"], "Score": round(result["score"], 2)}
-        for headline, result in zip(headlines, resultados)
+        {"Ticker": ticker, "Headline": headline, "Sentimento": result["label"], "Score": round(result["score"], 2)}
+        for headline, result, ticker in zip(headlines, resultados, tickers)
     ]
 
     # Cria a planilha com openpyxl
@@ -46,9 +47,9 @@ def analisar_sentimento(noticias: List[dict]):
     ws.title = "Análise"
 
     # Adiciona o cabeçalho e valores
-    ws.append(["Headline", "Sentimento", "Score"])
+    ws.append(["Tickers", "Headline", "Sentimento", "Score"])
     for resultado in lista_resultados:
-        ws.append([resultado["Headline"], resultado["Sentimento"], resultado["Score"]])
+        ws.append([resultado["Ticker"], resultado["Headline"], resultado["Sentimento"], resultado["Score"]])
 
     # Ajusta a largura das colunas
     for coluna in ws.columns:
@@ -56,3 +57,5 @@ def analisar_sentimento(noticias: List[dict]):
 
     # Salva a planilha
     wb.save("Analise De Sentimento.xlsx")
+
+    return lista_resultados

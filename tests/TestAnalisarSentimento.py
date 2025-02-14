@@ -1,7 +1,7 @@
 from unittest.mock import patch
 
 import pytest
-from src.ai.finbert import analisar_sentimento
+from src.service.finbert_analise_de_sentimento import analisar_sentimento
 
 
 def test_lista_vazia():
