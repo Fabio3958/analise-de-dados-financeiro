@@ -1,21 +1,21 @@
 from collections.abc import Callable
 from newsapi import NewsApiClient
-from src.config import config
 from datetime import date, timedelta
 
 
-def recuperar_noticias_financeiras(function_news_api: Callable, key_words_list: list[str]) -> list[dict]:
+def recuperar_noticias_financeiras(api_key: str, function_news_api: Callable, key_words_list: list[str]) -> list[dict]:
 
     """
         Busca notícias financeiras usando palavras-chave e uma função da API de notícias.
 
+        :param str api_key: api_key da newsAPI
         :param Callable function_news_api: Função da NewsApiClient (ex: get_top_headlines ou get_everything).
         :param list[str] key_words_list: Lista de palavras chaves a serem pesquisadas.
         :return list[dict] Lista de artigos de notícias encontradas
     """
 
     article_list = []
-    news_api_client = NewsApiClient(config.API_KEY)
+    news_api_client = NewsApiClient(api_key)
 
     for element in key_words_list:
         uma_semana_atras = date.today() - timedelta(days=7)

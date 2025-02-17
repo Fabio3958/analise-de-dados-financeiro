@@ -1,15 +1,14 @@
 # Projeto de Análise Financeira
 
-Este projeto é uma ferramenta de análise financeira que combina a recuperação de notícias, análise de sentimento e otimização de portfólio para auxiliar na tomada de decisões financeiras.
+Ferramenta de análise financeira que combina notícias, análise de sentimento e otimização de portfólio para auxiliar na tomada de decisões.
 
 ## Funcionalidades
 
-1. **Recuperação de Notícias Financeiras**
+1. **Notícias Financeiras**
    - Busca notícias financeiras com base em palavras-chave utilizando uma API de notícias.
    
 2. **Análise de Sentimento**
    - Analisa o sentimento de manchetes de notícias utilizando o modelo FinBERT-PT-BR.
-   - Salva os resultados da análise em uma planilha Excel para fácil visualização.
 
 3. **Otimização de Portfólio**
    - Otimiza o portfólio utilizando a biblioteca PyPortfolioOpt.
@@ -31,6 +30,7 @@ Este projeto é uma ferramenta de análise financeira que combina a recuperaçã
     source venv/bin/activate  # Linux/macOS
     venv\Scripts\activate     # Windows
     pip install -r requirements.txt
+    streamlit app.py
    ```
 ## Licença
 Este projeto está licenciado sob a licença MIT - veja o arquivo [LICENSE](LICENSE) para mais detalhes.

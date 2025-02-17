@@ -1,4 +1,3 @@
-import openpyxl
 from transformers import BertTokenizer, BertForSequenceClassification
 from transformers import pipeline
 
@@ -40,22 +39,5 @@ def analisar_sentimento(noticias: list[dict]) -> list[dict]:
         {"Ticker": ticker, "Headline": headline, "Sentimento": result["label"], "Score": round(result["score"], 2)}
         for headline, result, ticker in zip(headlines, resultados, tickers)
     ]
-
-    # Cria a planilha com openpyxl
-    wb = openpyxl.Workbook()
-    ws = wb.active
-    ws.title = "Análise"
-
-    # Adiciona o cabeçalho e valores
-    ws.append(["Tickers", "Headline", "Sentimento", "Score"])
-    for resultado in lista_resultados:
-        ws.append([resultado["Ticker"], resultado["Headline"], resultado["Sentimento"], resultado["Score"]])
-
-    # Ajusta a largura das colunas
-    for coluna in ws.columns:
-        ws.column_dimensions[coluna[0].column_letter].auto_size = True
-
-    # Salva a planilha
-    wb.save("Analise De Sentimento.xlsx")
 
     return lista_resultados

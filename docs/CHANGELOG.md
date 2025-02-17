@@ -4,9 +4,12 @@ Este arquivo documenta todas as mudanças importantes do projeto, seguindo o for
 
 ## [Unreleased]
 
+## [1.0.0] - 2025-02-17
 ### Added
-
-- Planejamento para criação de dashboards interativos.
+- **Criação da interface interativa** usando Streamlit, permitindo que usuários insiram dados, executem análises e visualizem resultados em tempo real.
+- **Deploy da aplicação** no Streamlit Community Cloud, tornando o projeto acessível publicamente.
+### Changed
+- **BREAKING CHANGE**: A estrutura do projeto foi adaptada para suportar deploy contínuo via GitHub, com configurações de ambiente gerenciadas pelo Streamlit.
 
 ## [0.4.0] - 2025-02-10
 ### Added
@@ -25,13 +28,9 @@ Este arquivo documenta todas as mudanças importantes do projeto, seguindo o for
 - Implementação da busca de notícias com NewsAPI. Agora, notícias poderão ser analisadas pela IA.
 
 ## [0.1.0] - 2025-01-15
-
 ### Added
-
 - Estrutura inicial do projeto.
-
 - Planejamento e definição de funcionalidades principais:
   - Dashboards para visualização de dados financeiros.
   - Análises automatizadas de desempenho de ativos.
   - Uso de algoritmos de IA para geração de carteiras personalizadas.
-
