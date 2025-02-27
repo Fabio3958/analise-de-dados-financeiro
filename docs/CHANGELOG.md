@@ -4,6 +4,10 @@ Este arquivo documenta todas as mudanças importantes do projeto, seguindo o for
 
 ## [Unreleased]
 
+## [1.0.1] - 2025-02-27
+### Fixed
+- requirements.txt atualizado para sempre puxar a versão mais atualizada do yfinance.
+
 ## [1.0.0] - 2025-02-17
 ### Added
 - **Criação da interface interativa** usando Streamlit, permitindo que usuários insiram dados, executem análises e visualizem resultados em tempo real.
