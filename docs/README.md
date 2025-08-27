@@ -28,7 +28,7 @@ Ferramenta de análise financeira que combina notícias, análise de sentimento 
     cd AnaliseDeDadosInvestimentos
     python -m venv venv
     source venv/bin/activate  # Linux/macOS
-    venv\Scripts\activate     # Windows
+    .\venv\Scripts\activate     # Windows
     pip install -r requirements.txt
     streamlit app.py
    ```

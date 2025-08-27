@@ -1,3 +1,5 @@
+import os
+
 import streamlit as st
 import pandas as pd
 import plotly.express as px
@@ -9,8 +11,19 @@ from src.service.otimizacao_de_porfolio import otimizar_portfolio
 
 
 def gerar_interface() -> None:
-
     """ Cria a interface de usuário com Streamlit"""
+
+    @st.dialog("Aviso", width="large")
+    def aviso():
+        with open("./src/utils/aviso.md", "r", encoding="utf-8") as f:
+            conteudo = f.read()
+        st.write(conteudo)
+        if st.button("Ok"):
+            st.session_state.aviso = True
+            st.rerun()
+
+    if "aviso" not in st.session_state:
+        aviso()
 
     # Configuração da página
     st.set_page_config(page_title="Análise de Investimentos", layout="wide")

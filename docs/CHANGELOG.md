@@ -3,6 +3,9 @@
 Este arquivo documenta todas as mudanças importantes do projeto, seguindo o formato Keep a Changelog e utilizando Semantic Versioning.
 
 ## [Unreleased]
+## [1.1.1] - 2025-08-27
+### Added
+ - Dialog de aviso com explicações e informações importantes ao usuário
 
 ## [1.0.1] - 2025-02-27
 ### Fixed
