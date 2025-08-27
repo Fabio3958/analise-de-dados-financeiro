@@ -1,9 +1,8 @@
-import os
-
 import streamlit as st
 import pandas as pd
 import plotly.express as px
 from newsapi import NewsApiClient
+from sympy.abc import lamda
 
 from src.api.news_api import recuperar_noticias_financeiras
 from src.service.finbert_analise_de_sentimento import analisar_sentimento
@@ -13,20 +12,21 @@ from src.service.otimizacao_de_porfolio import otimizar_portfolio
 def gerar_interface() -> None:
     """ Cria a interface de usuário com Streamlit"""
 
-    @st.dialog("Aviso", width="large")
-    def aviso():
-        with open("./src/utils/aviso.md", "r", encoding="utf-8") as f:
-            conteudo = f.read()
-        st.write(conteudo)
-        if st.button("Ok"):
-            st.session_state.aviso = True
-            st.rerun()
-
-    if "aviso" not in st.session_state:
-        aviso()
-
     # Configuração da página
     st.set_page_config(page_title="Análise de Investimentos", layout="wide")
+
+    if "aviso_aceito" not in st.session_state:
+        st.session_state.aviso_aceito = False
+    # Dialog de aviso - só mostra se não foi aceito ainda
+    if not st.session_state.aviso_aceito:
+        # Abre o diálogo
+        @st.dialog("Aviso", width="large", on_dismiss=lambda: st.session_state.__setitem__("aviso_aceito", True))
+        def mostrar_aviso():
+            with open("./src/utils/aviso.md", "r", encoding="utf-8") as f:
+                conteudo = f.read()
+            st.write(conteudo)
+        mostrar_aviso()
+
     st.title("Análise de Investimentos e Otimização de Portfólio")
 
     # Sidebar para entradas do usuário
@@ -39,7 +39,7 @@ def gerar_interface() -> None:
 
     # Botão para executar a análise
     if st.sidebar.button("Executar Análise"):
-
+        st.session_state.aviso_aceito = True
         lista_acoes = [acao.strip() for acao in acoes.split(",")]
 
         # Verificação de entradas inválidas
